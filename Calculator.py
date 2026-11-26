@@ -21,15 +21,34 @@ def modulus(num1, num2):
     if num2 == 0:
         return "Cannot perform modulus by zero"
     return num1 % num2
-def view_history(history):
-    if not history:
-        print("No calculations yet.")
-    else:
-        print("\nCalculation History:")
-        for entry in history:
-            print(entry)
+def view_history():
+    try:
+        with open("calculation_history.txt",'r') as file:
+            history =file.readlines()
+        if not history:
+            print("No history found.")
+        else:
+            print("\nCalculation History:")
+            for entry in history:
+                print(entry.strip())
+    except FileNotFoundError:
+        print("No history found.")
 
-history=[]
+def clear_history():
+    confirm = input("Are you sure you want to clear the history? (y/n): ")
+
+    if confirm.lower() == 'y':
+        try:
+            with open("calculation_history.txt", "w") as file:
+                pass
+            print("History cleared.")
+
+        except OSError as e:
+            print(f"Error clearing history: {e}")
+
+    else:
+        print("Clearing history cancelled.")
+
 while True:
     print("\nSelect operation:")
     print("1. Add")
@@ -40,17 +59,20 @@ while True:
     print("6.modulus")
     print("7.view history")
     print("8.Exit")
-    op = input("Enter choice (1/2/3/4/5/6/7/8): ")
-
-    if op == '8':
+    print("9.clear history")
+    op = input("Enter choice (1/2/3/4/5/6/7/8/9): ")
+    if op =='9':
+        clear_history()
+        continue
+    elif op == '8':
         print("Exiting", end="")
         for i in range(3):
             print(".", end="")
-            time.sleep(1)
+            time.sleep(0.5)
         print("\nExited")
         break
     elif op =='7':
-            view_history(history)
+            view_history()
             continue
     elif op in ['1', '2', '3', '4','5','6']:
         try:
@@ -85,9 +107,8 @@ while True:
             symbol ='%'
 
         if isinstance(result, (int, float)):
-            calculation =f"\n{num1} {symbol} {num2} = {result}"
+            calculation =f"{num1} {symbol} {num2} = {result}"
             print(calculation)
-            history.append(calculation)
 
             with open("calculation_history.txt","a") as file:
                 file.write(calculation + "\n")
