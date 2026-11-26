@@ -1,29 +1,56 @@
 # Python Beginner Projects
 
-A small collection of beginner-friendly Python command-line programs. These projects use only Python's standard library.
+A collection of beginner-friendly Python command-line programs using only the Python standard library.
 
 ## Projects
 
 ### Greeting Bot
 
-Asks for your name and responds with a friendly greeting. If you enter a blank name, it greets you without using a name.
+The greeting bot asks for the user's name and prints a welcome message.
 
-Run it with:
+- Enter a name to receive a personalized greeting.
+- Leave the input blank to receive a "name missing" message.
+
+Run it from the project directory:
 
 ```bash
-python Greeting_bot.py
+python Greet_bot/greet_bot.py
 ```
 
 ### Calculator
 
-An interactive calculator with addition, subtraction, multiplication, division, exponentiation, and modulus. It also keeps a session history and appends successful calculations to `calculation_history.txt`.
+An interactive calculator that supports:
 
-Run it with:
+- Addition
+- Subtraction
+- Multiplication
+- Division
+- Exponentiation
+- Modulus
+- Viewing and clearing calculation history
+
+Calculation results are appended to `calculation_history.txt`. Choose `8` to exit and `9` to clear the history.
+
+Run it from the project directory:
 
 ```bash
-python Calculator.py
+python Calculator/Calculator.py
+```
+
+### Chatbot
+
+A simple keyword-based chatbot that recognizes words such as `hello`, `hi`, `name`, `python`, `help`, and `how are you`.
+
+Type `bye` to end the conversation. The program then displays the conversation history and analyzes a sample list of student marks.
+
+Run it from the project directory:
+
+```bash
+python Chatbot/chatbot.py
 ```
 
 ## Requirements
 
 - Python 3
+
+No third-party packages are required.
