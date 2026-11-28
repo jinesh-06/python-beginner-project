@@ -1,25 +1,48 @@
-# Python Beginner Projects
+# Python Beginner Practice
 
-A collection of beginner-friendly Python command-line programs using only the Python standard library.
+A collection of small Python projects for practicing Python fundamentals, file handling, CSV data, pandas, and basic chatbot behavior.
 
 ## Projects
 
+| Project | Description |
+| --- | --- |
+| `Greet_bot` | Asks for a name and prints a personalized welcome message. |
+| `Calculator` | Performs basic arithmetic and stores calculation history in a text file. |
+| `Console_chatbot` | A keyword-based chatbot that analyzes a short list of student marks. |
+| `Chat_bot` | A chatbot with persistent JSON history, date/time replies, and CSV student analysis. |
+| `pandas_Practice` | Loads, cleans, analyzes, and exports a pandas student performance dataset. |
+
+## Requirements
+
+- Python 3.10 or newer
+- `pandas`
+- `python-dotenv`
+
+Install the external packages with:
+
+```bash
+python -m pip install pandas python-dotenv
+```
+
+## Run a Project
+
+Run commands from the repository root.
+
 ### Greeting Bot
-
-The greeting bot asks for the user's name and prints a welcome message.
-
-- Enter a name to receive a personalized greeting.
-- Leave the input blank to receive a "name missing" message.
-
-Run it from the project directory:
 
 ```bash
 python Greet_bot/greet_bot.py
 ```
 
+Enter a name when prompted. Leaving the name empty prints a missing-name message.
+
 ### Calculator
 
-An interactive calculator that supports:
+```bash
+python Calculator/Calculator.py
+```
+
+Supported operations:
 
 - Addition
 - Subtraction
@@ -27,30 +50,82 @@ An interactive calculator that supports:
 - Division
 - Exponentiation
 - Modulus
-- Viewing and clearing calculation history
+- View calculation history
+- Clear calculation history
+- Exit
 
-Calculation results are appended to `calculation_history.txt`. Choose `8` to exit and `9` to clear the history.
+History is stored in `calculation_history.txt` in the directory from which the script is run.
 
-Run it from the project directory:
-
-```bash
-python Calculator/Calculator.py
-```
-
-### Chatbot
-
-A simple keyword-based chatbot that recognizes words such as `hello`, `hi`, `name`, `python`, `help`, and `how are you`.
-
-Type `bye` to end the conversation. The program then displays the conversation history and analyzes a sample list of student marks.
-
-Run it from the project directory:
+### Console Chatbot
 
 ```bash
-python Chatbot/chatbot.py
+python Console_chatbot/chatbot.py
 ```
 
-## Requirements
+Supported keywords include `hello`, `hi`, `name`, `python`, `help`, and `how are you`. Enter `bye` to end the chat and show the conversation and student marks summary.
 
-- Python 3
+### Persistent Chatbot
 
-No third-party packages are required.
+```bash
+cd Chat_bot
+python main.py
+```
+
+Commands:
+
+- `history` - show previous chat messages
+- `students` - analyze `students.csv`
+- `bye` - end the conversation
+
+Chat history is saved in `Chat_bot/chat_history.json`.
+
+The chatbot name can be configured in `Chat_bot/.env`:
+
+```text
+BOT_NAME=PythonBot
+```
+
+The CSV must contain the columns `name`, `python`, `math`, and `english`.
+
+### Pandas Practice
+
+```bash
+cd pandas_Practice
+python main.py
+```
+
+This project:
+
+- Loads `Dataset/StudentsPerformance.csv`
+- Displays dataset information and missing values
+- Removes duplicate rows
+- Adds an average score and performance category
+- Calculates grouped averages
+- Finds high-performing students
+- Saves the cleaned data as `clean.csv`
+
+## Project Structure
+
+```text
+python_beginer_practice/
+|-- Calculator/
+|   `-- Calculator.py
+|-- Chat_bot/
+|   |-- chatbot.py
+|   |-- main.py
+|   |-- students.csv
+|   `-- .env
+|-- Console_chatbot/
+|   `-- chatbot.py
+|-- Greet_bot/
+|   `-- greet_bot.py
+|-- pandas_Practice/
+|   |-- main.py
+|   `-- Dataset/
+|       `-- StudentsPerformance.csv
+`-- README.md
+```
+
+## License
+
+This repository is a personal Python practice project. No license is currently specified.
